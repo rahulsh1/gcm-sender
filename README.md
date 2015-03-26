@@ -1,6 +1,8 @@
 # gcm-sender
 Java Program that acts as a GCM Server for HTTP connections with JSON payload.
 
+Note this is not a full implementation and is good for testing purposes only.
+
 ##### Prerequisites
 1. Maven
 2. JDK 1.7
@@ -9,21 +11,21 @@ Java Program that acts as a GCM Server for HTTP connections with JSON payload.
 Modify ServerApp.java with your api key and Device Registration Ids.
 
     // Change this with your Api Key obtained from GDC Credentials.
-    final static String apiKey = "AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    final static String apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
     // Change the registration Id. Add one or more to this Array
     private final static String[] myDevices = {
-        "APA91bxxxxxxxxxxxxxxxxxxxxxx"
+        "xxxxxxxxxxxxxxxxxxxxxxx"
     };
 
 ##### Build
     $ mvn clean install
 
 ##### To Run
-    $ mvn clean install -PRun
+    $ mvn install -PRun
 
 
-##### Sample outout
+##### Sample output
     Sending
     {"data":{"time":"15:16.2342","score":"4x6"},"collapse_key":"score_update","time_to_live":300,"delay_while_idle":false,"registration_ids":["APA9
     1bFlmPxDGNWp42wCJssxxxxxxxx"]}
@@ -35,10 +37,10 @@ Modify ServerApp.java with your api key and Device Registration Ids.
 
 
 ##### Client App
-Extract values from the Intent as shown below
+Inside your Android App, you can extract values from the Intent as shown below
 
     String score = intent.getStringExtra("score");
-    String time  = intent.getStringExtra("time")
+    String time  = intent.getStringExtra("time");
 
 
-More info on Implementing GCM Servercan be found [here](https://developer.android.com/google/gcm/server.html)
+More information on Implementing GCM Server can be found [here](https://developer.android.com/google/gcm/server.html)
