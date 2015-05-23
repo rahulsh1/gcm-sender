@@ -1,6 +1,5 @@
 package org.android.gcm;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -10,7 +9,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpSender {
+/**
+ * HTTP Dispatch of JSON Payload to Google Cloud Messaging Server.
+ */
+public final class HttpSender {
 
   /**
    * Sends the request to GCM URL.
@@ -18,7 +20,7 @@ public class HttpSender {
    * @param content json data
    * @return true if request was sent successfully
    */
-  public static boolean post(String apiKey, JSONContent content) {
+  public static boolean post(final String apiKey, final JSONContent content) {
     boolean status = false;
 
     try {
@@ -38,9 +40,10 @@ public class HttpSender {
       }
 
       // Check response
-      int responseCode = connection.getResponseCode();
+      final int responseCode = connection.getResponseCode();
       System.out.println("Sent POST request to " + ServerApp.URL);
       System.out.println("Got Response Code : " + responseCode);
+      // Fetch response
       try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
         String inputLine;
         final StringBuffer response = new StringBuffer();

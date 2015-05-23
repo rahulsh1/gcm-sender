@@ -21,7 +21,7 @@ import java.util.Map;
   "registration_ids":["4", "8", "15", "16", "23", "42"]
 }
  */
-public class JSONContent implements Serializable {
+public final class JSONContent implements Serializable {
 
   @JsonProperty(value="collapse_key")
   private String collapseKey;
@@ -39,20 +39,38 @@ public class JSONContent implements Serializable {
     registrationIds = new ArrayList<>();
   }
 
-  public static JSONContent of(String collapseKey, int timeToLive, boolean delayWhileIdle) {
-    JSONContent myObj = new JSONContent();
+  /**
+   * Create JSON Content with mandatory params.
+   * @param collapseKey
+   * @param timeToLive
+   * @param delayWhileIdle
+   * @return JSON Payload
+   */
+  public static JSONContent of(final String collapseKey, final int timeToLive, final boolean delayWhileIdle) {
+    final JSONContent myObj = new JSONContent();
     myObj.collapseKey = collapseKey;
     myObj.timeToLive = timeToLive;
     myObj.delayWhileIdle = delayWhileIdle;
     return myObj;
   }
 
-  public JSONContent withRegistrationId(String registrationId) {
+  /**
+   * Add registration-id to the payload
+   * @param registrationId id
+   * @return JSON Payload
+   */
+  public JSONContent withRegistrationId(final String registrationId) {
     registrationIds.add(registrationId);
     return this;
   }
 
-  public JSONContent withData(String key, String value) {
+  /**
+   * Add custom key, values to the payload
+   * @param key key
+   * @param value value
+   * @return JSON Payload
+   */
+  public JSONContent withData(final String key, final String value) {
     data.put(key, value);
     return this;
   }
