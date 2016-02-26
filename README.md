@@ -1,6 +1,8 @@
 # gcm-sender
 Java Program that acts as a GCM Server for HTTP connections with JSON payload.
 
+[![Build Status](https://travis-ci.org/rahulsh1/gcm-sender.svg?branch=master)](https://travis-ci.org/rahulsh1/gcm-sender)
+
 Note this is not a full implementation and is good for testing purposes only.
 
 ##### Prerequisites
