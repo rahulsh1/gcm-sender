@@ -2,10 +2,7 @@ package org.android.gcm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -35,7 +32,7 @@ public final class HttpSender {
       // Add JSON data into POST request body
       ObjectMapper mapper = new ObjectMapper();
       try (DataOutputStream dataOutputStream = new DataOutputStream(connection.getOutputStream())) {
-        mapper.writeValue(dataOutputStream, content);
+        mapper.writeValue((DataOutput) dataOutputStream, content);
         dataOutputStream.flush();
       }
 
